@@ -34,8 +34,8 @@ class OrderForm extends Component {
 
   handleIngredientChange = e => {
     e.preventDefault();
-    let test = this.state.ingredients.filter(ingredient => ingredient === e.target.name);
-    if (test.length < 2) {
+    let ingredientAmounts = this.state.ingredients.filter(ingredient => ingredient === e.target.name);
+    if (ingredientAmounts.length < 2) {
       this.setState({ ingredients: [...this.state.ingredients, e.target.name] });
     }
   }
