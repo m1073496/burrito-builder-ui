@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import { submitOrder } from '../../apiCalls';
 
 class OrderForm extends Component {
   constructor(props) {
@@ -13,7 +14,11 @@ class OrderForm extends Component {
 
   handleSubmit = e => {
     e.preventDefault();
-    this.clearInputs();
+    if (this.state.name && this.state.ingredients.length) {
+      submitOrder(this.state)
+      .then(data => console.log(data))
+      this.clearInputs();
+    }
   }
 
   clearInputs = () => {
@@ -51,7 +56,7 @@ class OrderForm extends Component {
 
         { ingredientButtons }
 
-        <p>Order: { this.state.ingredients || 'Nothing selected' }</p>
+        <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
         <button onClick={e => this.handleSubmit(e)}>
           Submit Order
