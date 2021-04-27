@@ -3,6 +3,7 @@ import './Orders.css';
 
 const Orders = props => {
   const orderEls = props.orders.map(order => {
+    console.log(order)
     return (
       <div className="order">
         <h3>{order.name}</h3>
@@ -16,7 +17,7 @@ const Orders = props => {
   });
 
   return (
-    <section>
+    <section data-cy="order-container">
       { orderEls.length ? orderEls : <p>No orders yet!</p> }
     </section>
   )

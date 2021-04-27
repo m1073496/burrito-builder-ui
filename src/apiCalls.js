@@ -12,5 +12,7 @@ export const submitOrder = (newOrder) => {
       body: JSON.stringify(newOrder)
     }
   )
-  .then(response => response.json())
+  .then(response => {
+     return response.json()
+  })
 }

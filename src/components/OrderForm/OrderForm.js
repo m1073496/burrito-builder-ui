@@ -13,11 +13,11 @@ class OrderForm extends Component {
 
 
   handleSubmit = e => {
-
     e.preventDefault();
     if (this.state.name && this.state.ingredients.length) {
       submitOrder(this.state)
       .then(data => {
+        console.log(data)
         this.props.updateOrders(data)
       })
       this.clearInputs();
@@ -48,7 +48,7 @@ class OrderForm extends Component {
     });
 
     return (
-      <form>
+      <form data-cy="order-form">
         <input
           type='text'
           placeholder='Name'
@@ -61,7 +61,7 @@ class OrderForm extends Component {
 
         <p>Order: { this.state.ingredients.join(', ') || 'Nothing selected' }</p>
 
-        <button onClick={e => this.handleSubmit(e)}>
+        <button data-cy="submit-button" onClick={e => this.handleSubmit(e)}>
           Submit Order
         </button>
       </form>
