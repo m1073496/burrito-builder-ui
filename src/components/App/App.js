@@ -12,6 +12,10 @@ class App extends Component {
     }
   }
 
+  updateOrders = (newOrder) => {
+    this.setState({ orders: [...this.state.orders, newOrder ]})
+  }
+
   componentDidMount() {
     getOrders()
       .then(data => {
@@ -25,10 +29,10 @@ class App extends Component {
       <main className="App">
         <header>
           <h1>Burrito Builder</h1>
-          <OrderForm />
+          <OrderForm updateOrders={ this.updateOrders }/>
         </header>
 
-        <Orders orders={ this.state.orders }/>
+        <Orders orders={ this.state.orders } />
       </main>
     );
   }

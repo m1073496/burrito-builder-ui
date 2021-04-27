@@ -3,7 +3,7 @@ import { submitOrder } from '../../apiCalls';
 
 class OrderForm extends Component {
   constructor(props) {
-    super();
+    super(props);
     this.props = props;
     this.state = {
       name: '',
@@ -13,10 +13,13 @@ class OrderForm extends Component {
 
 
   handleSubmit = e => {
+
     e.preventDefault();
     if (this.state.name && this.state.ingredients.length) {
       submitOrder(this.state)
-      .then(data => console.log(data))
+      .then(data => {
+        this.props.updateOrders(data)
+      })
       this.clearInputs();
     }
   }
