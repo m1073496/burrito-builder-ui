@@ -7,6 +7,9 @@ import OrderForm from '../../components/OrderForm/OrderForm';
 class App extends Component {
   constructor(props) {
     super();
+    this.state = {
+      orders: []
+    }
   }
 
   componentDidMount() {
@@ -22,7 +25,7 @@ class App extends Component {
           <OrderForm />
         </header>
 
-        <Orders orders={this.state.orders}/>
+        <Orders orders={ this.state.orders }/>
       </main>
     );
   }
